@@ -5,7 +5,6 @@
  */
 package View;
 
-import dao.DataSource;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -140,10 +139,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        DataSource ds  = new DataSource();
-        ds.getConnection();
-        
-        
         
         if (txtUsuario.getText().equals("Usuario") && txtSenha.getText().equals("1234")){
             new MDI().setVisible(true);
@@ -185,10 +180,8 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 
@@ -202,11 +195,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-    private void iniciarTela() {
-        DataSource ds = new DataSource();
-        ds.closeDataSource();
-        
-        
+    private void iniciarTela() { 
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png")).getImage());
         
         ImageIcon icon = new ImageIcon("src/Images/LogoTipo_320.jpg");

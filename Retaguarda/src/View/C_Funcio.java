@@ -6,7 +6,7 @@
 package View;
 
 import Entity.Usuario;
-import dao.UsuarioDAO;
+import Data.UsuarioDATA;
 import javax.swing.JOptionPane;
 
 /**
@@ -146,10 +146,10 @@ public class C_Funcio extends javax.swing.JInternalFrame {
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
         
         Usuario u = new Usuario(txtNome.getText(), txtAbreviacao.getText(), txtSenha.getText());
-        UsuarioDAO dao = new UsuarioDAO();
+        UsuarioDATA data = new UsuarioDATA();
         
-        dao.inserirData(u);
-        //dao.inserir(u);
+        data.inserir(u);
+        
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -183,10 +183,10 @@ public class C_Funcio extends javax.swing.JInternalFrame {
         limparTela();
         
         if(codigo > 0){
-            UsuarioDAO dao = new UsuarioDAO();
-            Usuario u = dao.retornaDadosCodigo(codigo);
+            UsuarioDATA data = new UsuarioDATA();
+            Usuario u = data.findById(codigo);
             
-            if(u.getCodigo() > 0){
+            if(u != null && u.getCodigo() > 0){
                 txtCodigo.setText(Integer.toString(u.getCodigo()));
                 txtNome.setText(u.getNome());
                 txtAbreviacao.setText(u.getAbreviacao());
